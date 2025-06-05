@@ -1,0 +1,34 @@
+---
+whiskers:
+  version: ^2.0.0
+  matrix:
+    - flavor
+  filename: "css/{{flavor.identifier}}.css"
+---
+/* evergarden {{flavor.identifier}} */
+:root {
+  --ev-{{flavor.identifier}}-red: #{{red.hex}};
+  --ev-{{flavor.identifier}}-orange: #{{orange.hex}};
+  --ev-{{flavor.identifier}}-yellow: #{{yellow.hex}};
+  --ev-{{flavor.identifier}}-lime: #{{lime.hex}};
+  --ev-{{flavor.identifier}}-green: #{{green.hex}};
+  --ev-{{flavor.identifier}}-aqua: #{{aqua.hex}};
+  --ev-{{flavor.identifier}}-skye: #{{skye.hex}};
+  --ev-{{flavor.identifier}}-snow: #{{snow.hex}};
+  --ev-{{flavor.identifier}}-blue: #{{blue.hex}};
+  --ev-{{flavor.identifier}}-purple: #{{purple.hex}};
+  --ev-{{flavor.identifier}}-pink: #{{pink.hex}};
+  --ev-{{flavor.identifier}}-cherry: #{{cherry.hex}};
+  --ev-{{flavor.identifier}}-text: #{{text.hex}};
+  --ev-{{flavor.identifier}}-subtext1: #{{subtext1.hex}};
+  --ev-{{flavor.identifier}}-subtext0: #{{subtext0.hex}};
+  --ev-{{flavor.identifier}}-overlay2: #{{overlay2.hex}};
+  --ev-{{flavor.identifier}}-overlay1: #{{overlay1.hex}};
+  --ev-{{flavor.identifier}}-overlay0: #{{overlay0.hex}};
+  --ev-{{flavor.identifier}}-surface2: #{{surface2.hex}};
+  --ev-{{flavor.identifier}}-surface1: #{{surface1.hex}};
+  --ev-{{flavor.identifier}}-surface0: #{{surface0.hex}};
+  --ev-{{flavor.identifier}}-base: #{{base.hex}};
+  --ev-{{flavor.identifier}}-mantle: #{{mantle.hex}};
+  --ev-{{flavor.identifier}}-crust: #{{crust.hex}};
+}
