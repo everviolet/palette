@@ -106,7 +106,7 @@ let
           {
             Black = {
               normal = {
-                name = "base";
+                name = "surface1";
                 code = 0;
               };
               bright = {
@@ -176,11 +176,11 @@ let
             };
             White = {
               normal = {
-                name = "text";
+                name = "subtext0";
                 code = 7;
               };
               bright = {
-                name = "subtext0";
+                name = "subtext1";
                 code = 15;
               };
             };
