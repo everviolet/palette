@@ -3,7 +3,6 @@
   riceLib,
 
   lib,
-  mkShellNoCC,
   writeShellApplication,
   ...
 }:
@@ -202,12 +201,10 @@ let
     runtimeInputs = [
     ];
     text = ''
-      echo '${toJSON palette}'
+      cat << EOF > ./palette.json
+      ${toJSON palette}
+      EOF
     '';
   };
-
-  scripts = [ generate-palette ];
 in
-mkShellNoCC {
-  packages = scripts;
-}
+generate-palette

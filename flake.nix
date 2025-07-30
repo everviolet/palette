@@ -17,9 +17,21 @@
     in
     {
       devShells = forAllSystems (pkgs: {
-        default = pkgs.callPackage ./shell.nix {
+        default = pkgs.callPackage ./nix/shell.nix {
           evgLib = inputs.evergarden-nix.lib;
           riceLib = inputs.nix-rice.lib.nix-rice;
+        };
+      });
+
+      apps = forAllSystems (pkgs: {
+        generate = {
+          type = "app";
+          program = let
+            generate-palette = pkgs.callPackage ./nix/script.nix {
+              evgLib = inputs.evergarden-nix.lib;
+              riceLib = inputs.nix-rice.lib.nix-rice;
+            };
+          in lib.getExe generate-palette;
         };
       });
     };
