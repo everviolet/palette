@@ -1,0 +1,36 @@
+name: Generate palette
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 23 * * *" # 23:00 everyday
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+        with:
+          logger: pretty
+
+      - name: Generate palette
+        run: nix run .#generate
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: 'feat: auto-sync upstream palettes'
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          branch: new-palettes
+          delete-branch: true
+          title: 'feat: auto-sync upstream palettes'
+          body: |
+            Auto-update `palette.json` based on https://github.com/everviolet/nix
