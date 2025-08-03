@@ -1,10 +1,12 @@
 {
   mkShellNoCC,
   callPackage,
+  evgLib,
+  riceLib,
   ...
-}@pkgs:
+}:
 let
-  generate-palette = callPackage ./script.nix;
+  generate-palette = callPackage ./script.nix { inherit evgLib riceLib; };
   scripts = [ generate-palette ];
 in
 mkShellNoCC {
