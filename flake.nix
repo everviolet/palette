@@ -3,7 +3,11 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    evergarden-nix.url = "github:everviolet/nix";
+    evergarden-nix = {
+      url = "github:everviolet/nix";
+
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-rice.url = "github:bertof/nix-rice";
   };
 
@@ -26,12 +30,14 @@
       apps = forAllSystems (pkgs: {
         generate = {
           type = "app";
-          program = let
-            generate-palette = pkgs.callPackage ./nix/script.nix {
-              evgLib = inputs.evergarden-nix.lib;
-              riceLib = inputs.nix-rice.lib.nix-rice;
-            };
-          in lib.getExe generate-palette;
+          program =
+            let
+              generate-palette = pkgs.callPackage ./nix/script.nix {
+                evgLib = inputs.evergarden-nix.lib;
+                riceLib = inputs.nix-rice.lib.nix-rice;
+              };
+            in
+            lib.getExe generate-palette;
         };
       });
     };
